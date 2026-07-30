@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+:root {
+  --color-void: #0a0b0d;
+  --color-steel: #16181c;
+  --color-steel-line: #2a2d33;
+  
+  --color-ice: #e9edef;
+  --color-muted: #767c84;
+
+  --font-display: "Oswald", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-body: "Inter", sans-serif;
+}
+
+@theme inline {
+  --color-void: var(--color-void);
+  --color-steel: var(--color-steel);
+  --color-steel-line: var(--color-steel-line);
+  --color-brass: var(--color-brass);
+  --color-brass-bright: var(--color-brass-bright);
+  --color-ice: var(--color-ice);
+  --color-muted: var(--color-muted);
+
+  --font-display: var(--font-display);
+  --font-mono: var(--font-mono);
+  --font-body: var(--font-body);
+}
+
+html {
+  background: var(--color-void);
+  scroll-behavior: auto;
+}
+
+body {
+  background: var(--color-void);
+  color: var(--color-ice);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+/* thin hairline grid texture used behind copy blocks */
+.grain-line {
+  background-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 39px,
+    var(--color-steel-line) 40px
+  );
+  background-size: 100% 40px;
+  opacity: 0.35;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* subtle scanline flicker for HUD text */
+@keyframes hud-flicker {
+  0%,
+  92%,
+  100% {
+    opacity: 1;
+  }
+  93% {
+    opacity: 0.4;
+  }
+  95% {
+    opacity: 0.85;
+  }
+}
+.hud-flicker {
+  animation: hud-flicker 6s infinite;
+}
+
+::selection {
+  background: var(--color-brass);
+  color: var(--color-void);
+}
